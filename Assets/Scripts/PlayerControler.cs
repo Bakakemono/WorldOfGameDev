@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerControler : MonoBehaviour
 {
 
@@ -41,6 +42,10 @@ public class PlayerControler : MonoBehaviour
     [SerializeField]
     private Transform FlipWeapon;
     private bool isRotate;
+    
+
+    private BossScript BossScript;
+    [SerializeField] GameManager gameManager;
 
     
     // Use this for initialization
@@ -48,6 +53,9 @@ public class PlayerControler : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         spawnTranform = GameObject.Find("Spawn").transform;
+        
+        BossScript = FindObjectOfType<BossScript>();
+        //gameManager = FindObjectOfType<GameManager>();
 
         playerAnimationControle = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
@@ -61,24 +69,25 @@ public class PlayerControler : MonoBehaviour
         render.flipX = horizontalInput < 0;
         playerAnimationControle.SetFloat("SpeedX", Mathf.Abs(horizontalInput));
         Vector2 forceDirection = new Vector2(horizontalInput, 0);
-        forceDirection *= Force;
-        rigid.AddForce(forceDirection);
+        //forceDirection *= Force;
+        horizontalInput *= Force;
+        //rigid.AddForce(forceDirection);
+        rigid.velocity = new Vector2(horizontalInput, rigid.velocity.y);
 
 
         FlipWeapon = GameObject.Find("FlipWeapon").transform;
 
         if (horizontalInput < -0.1 && isRotate == false)
         {
-            Debug.Log("Rotate");
             FlipWeapon.Rotate(0, 180, 0);
             isRotate = true;
         }
         else if (horizontalInput > 0.1 && isRotate == true)
         {
-            Debug.Log("back to normal");
             FlipWeapon.Rotate(0, 180, 0);
             isRotate = false;
         }
+        
 
         bool touchFloor = Physics2D.OverlapBox(positionRaycastJump.position, sizeRaycastJump, 0, layerMaskJump);
         if (Input.GetKeyDown("space") && touchFloor)
@@ -92,7 +101,6 @@ public class PlayerControler : MonoBehaviour
             Fire();
         }
     }
-    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -104,6 +112,14 @@ public class PlayerControler : MonoBehaviour
         if (collision.tag == "Limit")
         {
             transform.position = spawnTranform.position;
+        }
+        if (collision.tag == "BeginTheRealGame")
+        {
+            BossScript.ShootTheDev();
+        }
+        if(collision.tag == "OverpoweredBullet")
+        {
+            gameManager.LevelTwo();
         }
     }
 

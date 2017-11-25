@@ -23,14 +23,19 @@ public class BossScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+    }
+
+    public void ShootTheDev()
+    {
         if (hadShoot == false)
         {
             Fire();
             hadShoot = true;
         }
-	}
+    }
 
-    private void Fire()
+private void Fire()
     {
         Vector3 positionDebugEnd = gunTransform.position + gunTransform.right;
         //Debug.DrawLine(gunTransform.position, positionDebugEnd, Color.red, 5);

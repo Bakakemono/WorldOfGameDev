@@ -6,9 +6,10 @@ TagManager:
   tags:
   - Lava
   - Limit
-  - BeginBullet
   - PlayerBullet
   - EnemiBullet
+  - BeginTheRealGame
+  - OverpoweredBullet
   layers:
   - Default
   - TransparentFX
