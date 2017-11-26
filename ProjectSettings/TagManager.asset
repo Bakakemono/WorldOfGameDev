@@ -10,6 +10,11 @@ TagManager:
   - EnemiBullet
   - BeginTheRealGame
   - OverpoweredBullet
+  - RollerCoaster
+  - KeyBoard
+  - ToTheBoss
+  - Platform
+  - Enemi
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Platform
   - 
   - 
   - 
@@ -52,6 +57,9 @@ TagManager:
     locked: 0
   - name: SecondBackGround
     uniqueID: 2548371739
+    locked: 0
+  - name: ThirdBackGround
+    uniqueID: 2931030741
     locked: 0
   - name: Platform
     uniqueID: 3206329083

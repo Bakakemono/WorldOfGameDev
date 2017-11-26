@@ -10,6 +10,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField]
     private float Force = 10;
     private Rigidbody2D rigid;
+    private float horizontalInput;
 
     [Header("Jump")]
     [SerializeField]
@@ -65,13 +66,11 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
         render.flipX = horizontalInput < 0;
         playerAnimationControle.SetFloat("SpeedX", Mathf.Abs(horizontalInput));
         Vector2 forceDirection = new Vector2(horizontalInput, 0);
-        //forceDirection *= Force;
         horizontalInput *= Force;
-        //rigid.AddForce(forceDirection);
         rigid.velocity = new Vector2(horizontalInput, rigid.velocity.y);
 
 
@@ -79,10 +78,11 @@ public class PlayerControler : MonoBehaviour
 
         if (horizontalInput < -0.1 && isRotate == false)
         {
+            Debug.Log("Should Flip");
             FlipWeapon.Rotate(0, 180, 0);
             isRotate = true;
         }
-        else if (horizontalInput > 0.1 && isRotate == true)
+        else if (horizontalInput > -0.1 && isRotate == true)
         {
             FlipWeapon.Rotate(0, 180, 0);
             isRotate = false;
@@ -122,8 +122,7 @@ public class PlayerControler : MonoBehaviour
             gameManager.LevelTwo();
         }
     }
-
-
+    
 
     private void Fire()
     {

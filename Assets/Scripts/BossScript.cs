@@ -12,7 +12,6 @@ public class BossScript : MonoBehaviour {
     private float bulletVelocity = 2;
     [SerializeField]
     private float timeToFire = 2;
-    private float lastTimeFire = 0;
     private bool hadShoot = false;
 
 
@@ -30,12 +29,12 @@ public class BossScript : MonoBehaviour {
     {
         if (hadShoot == false)
         {
-            Fire();
+            firstFire();
             hadShoot = true;
         }
     }
 
-private void Fire()
+private void firstFire()
     {
         Vector3 positionDebugEnd = gunTransform.position + gunTransform.right;
         //Debug.DrawLine(gunTransform.position, positionDebugEnd, Color.red, 5);

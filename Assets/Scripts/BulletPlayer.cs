@@ -16,8 +16,12 @@ public class BulletPlayer : MonoBehaviour {
 	void Update () {
 		
 	}
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(bulletPrefab);
+        if (collision.tag == "Platform" || collision.tag == "Enemi")
+        {
+            Destroy(bulletPrefab);
+        }
+        
     }
 }
