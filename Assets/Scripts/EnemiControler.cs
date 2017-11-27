@@ -7,36 +7,44 @@ public class EnemiControler : MonoBehaviour {
     [SerializeField]
     private GameObject bulletPrefab;
     [SerializeField]
-    private Transform gunTransform;
+    private Transform[] gunsTransformList;
     [SerializeField]
     private float bulletVelocity;
-    [SerializeField]
-    private float timeToFire;
+
+    public bool Attack;
+    private Animator EnemiAnimatorControler;
+    
 
 
 
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(Fire());
+        EnemiAnimatorControler = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    private IEnumerator Fire()
-    {
-        while (true)
+        if (Attack == true)
         {
-            yield return new WaitForSeconds(timeToFire);
-            //foreach (Transform t in gunsTransformList)
-            {
-                GameObject bullet = Instantiate(bulletPrefab, gunTransform.position, gunTransform.rotation);
-                bullet.GetComponent<Rigidbody2D>().velocity = gunTransform.right * bulletVelocity;
-                Destroy(bullet, 5);
-            }
+            EnemiAnimatorControler.SetBool("Attacking", true);
+            
+        }
+        if (Attack == false)
+        {
+            EnemiAnimatorControler.SetBool("Attacking", false);
+        }
+
+    }
+    private void Fire()
+    {
+        foreach (Transform t in gunsTransformList)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, t.position, t.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = t.right * bulletVelocity;
+            Destroy(bullet, 5);
         }
     }
+
+    
 }

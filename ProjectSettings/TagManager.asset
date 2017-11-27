@@ -9,12 +9,15 @@ TagManager:
   - PlayerBullet
   - EnemiBullet
   - BeginTheRealGame
-  - OverpoweredBullet
   - RollerCoaster
   - KeyBoard
-  - ToTheBoss
   - Platform
   - Enemi
+  - ToLevelThree
+  - ToLevelFinal
+  - ToLevelTwo
+  - ToTheBoss
+  - EnemiZoneAttack
   layers:
   - Default
   - TransparentFX

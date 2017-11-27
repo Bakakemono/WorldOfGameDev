@@ -46,8 +46,10 @@ public class PlayerControler : MonoBehaviour
     
 
     private BossScript BossScript;
-    [SerializeField] GameManager gameManager;
+    [SerializeField]
+    GameManager gameManager;
 
+    
     
     // Use this for initialization
     void Start()
@@ -56,7 +58,6 @@ public class PlayerControler : MonoBehaviour
         spawnTranform = GameObject.Find("Spawn").transform;
         
         BossScript = FindObjectOfType<BossScript>();
-        //gameManager = FindObjectOfType<GameManager>();
 
         playerAnimationControle = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
@@ -72,13 +73,13 @@ public class PlayerControler : MonoBehaviour
         Vector2 forceDirection = new Vector2(horizontalInput, 0);
         horizontalInput *= Force;
         rigid.velocity = new Vector2(horizontalInput, rigid.velocity.y);
+        
 
 
         FlipWeapon = GameObject.Find("FlipWeapon").transform;
 
         if (horizontalInput < -0.1 && isRotate == false)
         {
-            Debug.Log("Should Flip");
             FlipWeapon.Rotate(0, 180, 0);
             isRotate = true;
         }
@@ -98,8 +99,13 @@ public class PlayerControler : MonoBehaviour
 
         if (Input.GetAxis("Fire2") > 0)
         {
-            Fire();
+            playerAnimationControle.SetBool("Throw",true);
         }
+    }
+
+    private void StopThrow()
+    {
+        playerAnimationControle.SetBool("Throw", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -117,12 +123,25 @@ public class PlayerControler : MonoBehaviour
         {
             BossScript.ShootTheDev();
         }
-        if(collision.tag == "OverpoweredBullet")
+        if(collision.tag == "ToLevelTwo")
         {
             gameManager.LevelTwo();
         }
+        if (collision.tag == "ToLevelThree")
+        {
+            gameManager.LevelThree();
+        }
+        if (collision.tag == "ToTheBoss")
+        {
+            gameManager.BossLevel();
+            
+        }
+        
+        
     }
-    
+
+   
+
 
     private void Fire()
     {

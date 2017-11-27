@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50916513664087438}
   - component: {fileID: 58468497119015242}
   m_Layer: 0
-  m_Name: EnemiBullet
+  m_Name: EnemiBullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!58 &58468497119015242
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -71,7 +71,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

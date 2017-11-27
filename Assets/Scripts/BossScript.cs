@@ -9,36 +9,51 @@ public class BossScript : MonoBehaviour {
     [SerializeField]
     private Transform gunTransform;
     [SerializeField]
-    private float bulletVelocity = 2;
+    private float bulletVelocity = 13;
     [SerializeField]
-    private float timeToFire = 2;
-    private bool hadShoot = false;
+    private GameObject player;
+    [SerializeField]
+    private Transform[] spawnPoints;
+    private int Index;
+
+    private Animator BossAnimationControler;
 
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start() {
+        BossAnimationControler = GetComponent<Animator>();
 
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (player != null)
+            gunTransform.LookAt(player.transform);
     }
 
     public void ShootTheDev()
     {
-        if (hadShoot == false)
-        {
-            firstFire();
-            hadShoot = true;
-        }
+        BossAnimationControler.SetBool("ShootTheDev", true);
+
     }
 
-private void firstFire()
+    public void StopShooting()
     {
-        Vector3 positionDebugEnd = gunTransform.position + gunTransform.right;
-        //Debug.DrawLine(gunTransform.position, positionDebugEnd, Color.red, 5);
-        GameObject Bullet = Instantiate(bulletPrefab, gunTransform.position, gunTransform.rotation);
-        Bullet.GetComponent<Rigidbody2D>().velocity = gunTransform.right * bulletVelocity;
+        BossAnimationControler.SetBool("ShootTheDev", false);
+    }
+
+    private void Fire()
+    {
+        GameObject Bullet = Instantiate(bulletPrefab, gunTransform.position, gameObject.transform.rotation);
+
+        if (player != null)
+        {
+            Bullet.GetComponent<Rigidbody2D>().velocity = gunTransform.forward* bulletVelocity;
+        }
+        else
+        {
+            Bullet.GetComponent<Rigidbody2D>().velocity = gunTransform.right * bulletVelocity;
+        }
+        Destroy(Bullet, 3);
     }
 }

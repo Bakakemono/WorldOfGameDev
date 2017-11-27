@@ -15,6 +15,8 @@ public class PauseScript : MonoBehaviour {
     [SerializeField]
     private GameManager gameManager;
 
+
+
 	// Use this for initialization
 	void Start () {
 		

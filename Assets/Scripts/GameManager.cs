@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    private bool ActivateFinalBoss = false;
 
 	// Use this for initialization
 	void Start () {
-		
+        DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame
@@ -34,5 +35,16 @@ public class GameManager : MonoBehaviour {
     public void LevelTwo()
     {
         SceneManager.LoadScene("SecondLevel");
+    }
+
+    public void LevelThree()
+    {
+        SceneManager.LoadScene("ThirdLevel");
+    }
+
+    public void BossLevel()
+    {
+        SceneManager.LoadScene("BossLevel");
+        ActivateFinalBoss = true;
     }
 }
