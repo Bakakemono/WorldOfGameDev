@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour {
         
         
     }
+    public void Credit()
+    {
+        SceneManager.LoadScene("Credit");
+    }
+
 
     public void LevelOne()
     {

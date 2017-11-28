@@ -21,6 +21,10 @@ public class StartGameScript : MonoBehaviour {
     {
         gameManager.LevelOne();
     }
+    public void Credit()
+    {
+        gameManager.Credit();
+    }
     public void Exit()
     {
         Debug.Log("Exit");
