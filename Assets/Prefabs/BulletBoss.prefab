@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212383422437862368}
   - component: {fileID: 58268213951481218}
   - component: {fileID: 50876879838329758}
+  - component: {fileID: 114092041206178250}
   m_Layer: 0
   m_Name: BulletBoss
-  m_TagString: Untagged
+  m_TagString: EnemiBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
+--- !u!114 &114092041206178250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687880023571742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4c9b1db38549a48aa81c0ac2095aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212383422437862368
 SpriteRenderer:
   m_ObjectHideFlags: 1

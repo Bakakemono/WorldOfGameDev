@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour {
     private bool ActivateFinalBoss = false;
     public static int PlayerPV = 20;
     public static int Mun = 20;
+    public static bool DestroyMusic = false;
     private bool PowerUpisActif = false;
     private int loading = 0;
+    
 
 
     // Use this for initialization
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour {
             loading++;
 
 
-        if (loading >= 100)
+        if (loading >= 60)
         {
             Mun++;
             loading = 0;
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour {
             
        
 	}
+   
     public void TakePowerUp()
     {
         PowerUpisActif = true;
@@ -60,14 +63,18 @@ public class GameManager : MonoBehaviour {
         Mun = 20;
         PowerUpisActif = false;
         loading = 0;
+        DestroyMusic = true;
         SceneManager.LoadScene("StartMenu");
+        
         
     }
 
     public void LevelOne()
     {
-        PlayerPV = 20;
+        DestroyMusic = false;
         SceneManager.LoadScene("FirstLevel");
+       
+        
       
     }
 
@@ -92,12 +99,13 @@ public class GameManager : MonoBehaviour {
     public void Defeat()
     {
         SceneManager.LoadScene("DeathMenu");
-     
+        DestroyMusic = true;
     }
 
     public void Win()
     {
         SceneManager.LoadScene("WinMenu");
+        DestroyMusic = true;
 
     }
 }

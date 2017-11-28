@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 61203585259776040}
   - component: {fileID: 114791152408414340}
   - component: {fileID: 95442934243632970}
+  - component: {fileID: 114613990017363486}
+  - component: {fileID: 82840672210948770}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -89,7 +91,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.56, y: 3.2}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 2.56, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -97,6 +99,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &82840672210948770
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934995831036914}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243890742879770466, guid: b5667bb55575a3c438ddd898e375b4e2,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95442934243632970
 Animator:
   serializedVersion: 3
@@ -114,6 +197,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114613990017363486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1934995831036914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497ca65c8c347cd46b3fbafcf672775c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TableSounds:
+  - {fileID: 8300000, guid: 961745fc4fe50ca479def7ace68635df, type: 3}
 --- !u!114 &114791152408414340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +225,9 @@ MonoBehaviour:
     type: 2}
   gunTransform: {fileID: 4497501115105944}
   bulletVelocity: 10
-  timeToFire: 2
+  player: {fileID: 0}
+  spawnPoints: []
+  bulletSound: {fileID: 114613990017363486}
 --- !u!212 &212603983800224726
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -162,12 +260,12 @@ SpriteRenderer:
   m_SortingLayerID: -1464301139
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fde41981305304040b0762c9dc72521c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1f9e223ef2b8a94ba5b3e8c1e6adee7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

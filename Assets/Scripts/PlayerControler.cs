@@ -51,6 +51,10 @@ public class PlayerControler : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     private GameObject PowerUp;
+
+    [Header("Sound")]
+    [SerializeField]
+    private MultiSoundRandom SoundGun;
     
     
     // Use this for initialization
@@ -92,13 +96,13 @@ public class PlayerControler : MonoBehaviour
         
 
         bool touchFloor = Physics2D.OverlapBox(positionRaycastJump.position, sizeRaycastJump, 0, layerMaskJump);
-        if (Input.GetKeyDown("space") && touchFloor)
+        if (Input.GetButtonDown("Jump") && touchFloor)
         {
 
             rigid.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         }
 
-        if (Input.GetAxis("Fire2") > 0 )
+        if (Input.GetAxis("Fire1") > 0 )
         {
             playerAnimationControle.SetBool("Throw",true);
             
@@ -150,6 +154,10 @@ public class PlayerControler : MonoBehaviour
             gameManager.TakePowerUp();
             Destroy(PowerUp);
         }
+        if(collision.tag == "TriggerActivateBoss")
+        {
+            BossScript.ShootTheDev();
+        }
     }
 
    
@@ -166,6 +174,7 @@ public class PlayerControler : MonoBehaviour
             Destroy(Bullet, 5);
             lastTimeFire = Time.realtimeSinceStartup;
             GameManager.Mun--;
+            SoundGun.PlaySound();
         }
     }
 }

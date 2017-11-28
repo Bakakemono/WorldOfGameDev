@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BulletPlayerManager : MonoBehaviour {
 
-    
+    [SerializeField]
+    private MultiSoundRandom BreakSound;
     
 	// Use this for initialization
 	void Start () {
@@ -19,15 +20,21 @@ public class BulletPlayerManager : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enemi")
         {
+            BreakSound.PlaySound();
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Platform")
+        {
+            BreakSound.PlaySound();
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.tag == "Boss")
+        {
+            BreakSound.PlaySound();
             Destroy(gameObject);
         }
         
+
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Platform")
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 }

@@ -19,6 +19,8 @@ TagManager:
   - ToTheBoss
   - EnemiZoneAttack
   - PowerUp
+  - TriggerActivateBoss
+  - Boss
   layers:
   - Default
   - TransparentFX

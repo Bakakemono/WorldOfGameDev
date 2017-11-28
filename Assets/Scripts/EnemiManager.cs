@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemiManager: MonoBehaviour {
 
@@ -19,7 +17,7 @@ public class EnemiManager: MonoBehaviour {
     public bool Attack;
 
     [SerializeField]
-    private GameObject ZoneAttack;
+    private MultiSoundRandom bulletSound;
     
     
     
@@ -77,6 +75,7 @@ public class EnemiManager: MonoBehaviour {
             bullet.GetComponent<Rigidbody2D>().velocity = t.right * bulletVelocity;
             Destroy(bullet, 5);
         }
+        bulletSound.PlaySound();
     }
 
     

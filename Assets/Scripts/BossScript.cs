@@ -16,12 +16,20 @@ public class BossScript : MonoBehaviour {
     private Transform[] spawnPoints;
     private int Index;
 
+    
+
     private Animator BossAnimationControler;
+    private int PV = 30;
+    
+    private GameManager gameManager;
+    [SerializeField]
+    private MultiSoundRandom bulletSound;
 
 
     // Use this for initialization
     void Start() {
         BossAnimationControler = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
 
     }
 
@@ -31,7 +39,32 @@ public class BossScript : MonoBehaviour {
         {
             gunTransform.LookAt(player.transform);
         }
+        if (player != null)
+        {
+            if (PV <= 20)
+            {
+                transform.position = spawnPoints[0].position;
+               
+            }
+            if (PV <= 10)
+            {
+                transform.position = spawnPoints[1].position;
 
+            }
+            if (PV <=0)
+            {
+                gameManager.Win();
+            }
+        }
+
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "PlayerBullet")
+        {
+            PV--;
+        }
     }
 
     public void ShootTheDev()
@@ -39,10 +72,14 @@ public class BossScript : MonoBehaviour {
         BossAnimationControler.SetBool("ShootTheDev", true);
 
     }
+    
 
     public void StopShooting()
     {
-        BossAnimationControler.SetBool("ShootTheDev", false);
+        if(player==null)
+        {
+            BossAnimationControler.SetBool("ShootTheDev", false);
+        }
     }
 
     private void Fire()
@@ -58,5 +95,6 @@ public class BossScript : MonoBehaviour {
             Bullet.GetComponent<Rigidbody2D>().velocity = gunTransform.right * bulletVelocity;
         }
         Destroy(Bullet, 3);
+        bulletSound.PlaySound();
     }
 }

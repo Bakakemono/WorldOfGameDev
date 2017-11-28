@@ -70,6 +70,8 @@ GameObject:
   - component: {fileID: 61848159190133928}
   - component: {fileID: 114310428957286788}
   - component: {fileID: 95880063820507580}
+  - component: {fileID: 114434204181399060}
+  - component: {fileID: 82084720897478270}
   m_Layer: 0
   m_Name: Enemi
   m_TagString: Enemi
@@ -230,6 +232,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &82084720897478270
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604487276562776}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243303450046181524, guid: b5667bb55575a3c438ddd898e375b4e2,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95880063820507580
 Animator:
   serializedVersion: 3
@@ -268,7 +351,23 @@ MonoBehaviour:
   - {fileID: 4829567371917368}
   bulletVelocity: 10
   Attack: 0
-  ZoneAttack: {fileID: 1314145524387368}
+  bulletSound: {fileID: 114434204181399060}
+--- !u!114 &114434204181399060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604487276562776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497ca65c8c347cd46b3fbafcf672775c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TableSounds:
+  - {fileID: 8300000, guid: 7418755a5535c904b8d2055a6225a3e4, type: 3}
+  - {fileID: 8300000, guid: ee1f8a09b9baac343853a23aadb691ea, type: 3}
+  - {fileID: 8300000, guid: 59f18042387442b41ab75d495ac9bd0c, type: 3}
+  - {fileID: 8300000, guid: b3f2a1f10ac0e37418963bb23530c99f, type: 3}
 --- !u!114 &114921115786482244
 MonoBehaviour:
   m_ObjectHideFlags: 1
