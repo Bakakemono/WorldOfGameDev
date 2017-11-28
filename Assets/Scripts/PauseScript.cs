@@ -8,18 +8,24 @@ public class PauseScript : MonoBehaviour {
     private GameObject pausePanel;
 
     [SerializeField]
+    private GameObject UIPanel;
+
+    [SerializeField]
     private GameObject errorText;
+    [SerializeField]
+    private GameObject DevText;
+    [SerializeField]
+    private GameObject PowerUpMun;
 
     private bool isInPause = false;
 
-    [SerializeField]
     private GameManager gameManager;
 
 
 
 	// Use this for initialization
 	void Start () {
-		
+        gameManager = FindObjectOfType<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +34,7 @@ public class PauseScript : MonoBehaviour {
         {
             isInPause = true;
             pausePanel.SetActive(true);
+            UIPanel.SetActive(false);
             Time.timeScale = 0;
         }
 	}
@@ -36,12 +43,15 @@ public class PauseScript : MonoBehaviour {
     {
         isInPause = false;
         pausePanel.SetActive(false);
+        UIPanel.SetActive(true);
         Time.timeScale = 1;
     }
     
     public void DebugThis()
     {
         errorText.SetActive(true);
+        DevText.SetActive(true);
+        PowerUpMun.SetActive(true);
     }
 
     public void BackToMainMenu()

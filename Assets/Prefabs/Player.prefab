@@ -302,7 +302,8 @@ MonoBehaviour:
   bulletVelocity: 10
   timeToFire: 0.2
   FlipWeapon: {fileID: 4371058650224054}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 114301832582005340, guid: b2b68bdcca7c9bf44a4ec62edc9ff016,
+    type: 2}
 --- !u!212 &212866618952228712
 SpriteRenderer:
   m_ObjectHideFlags: 1

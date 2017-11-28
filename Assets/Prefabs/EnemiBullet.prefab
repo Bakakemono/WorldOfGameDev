@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212164211310330276}
   - component: {fileID: 50916513664087438}
   - component: {fileID: 58468497119015242}
+  - component: {fileID: 114768257891309476}
   m_Layer: 0
   m_Name: EnemiBullet
-  m_TagString: Untagged
+  m_TagString: EnemiBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &114768257891309476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516980604263462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee7894e20f5a564a96e79b9938d6881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212164211310330276
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPlayer : MonoBehaviour {
+public class BulletEnemiManager : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject bulletPrefab;
-    
 	// Use this for initialization
 	void Start () {
 		
@@ -18,10 +15,13 @@ public class BulletPlayer : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Platform" || collision.tag == "Enemi")
+        if(collision.tag == "Platform" || collision.tag == "Player")
         {
-            Destroy(bulletPrefab);
+            Destroy(gameObject);
         }
-        
+    }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

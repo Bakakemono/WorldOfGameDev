@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemiCheckZOne : MonoBehaviour {
 
-    private EnemiControler enemiControler;
+    private EnemiManager enemiManager;
 	// Use this for initialization
 	void Start () {
-        enemiControler = GetComponentInParent<EnemiControler>();
+        enemiManager = GetComponentInParent<EnemiManager>();
 	}
 	
 	// Update is called once per frame
@@ -18,14 +18,15 @@ public class EnemiCheckZOne : MonoBehaviour {
     {
         if (collision.tag == "Player")
         {
-            enemiControler.Attack = true;
+            enemiManager.Attack = true;
+            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            enemiControler.Attack = false;
+            enemiManager.Attack = false;
         }
     }
 

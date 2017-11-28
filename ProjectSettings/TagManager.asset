@@ -18,6 +18,7 @@ TagManager:
   - ToLevelTwo
   - ToTheBoss
   - EnemiZoneAttack
+  - PowerUp
   layers:
   - Default
   - TransparentFX

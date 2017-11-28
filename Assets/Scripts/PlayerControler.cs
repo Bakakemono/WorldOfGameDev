@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
 
+    
+
     [Header("Physics")]
     [SerializeField]
     private float Force = 10;
@@ -44,11 +46,11 @@ public class PlayerControler : MonoBehaviour
     private Transform FlipWeapon;
     private bool isRotate;
     
-
     private BossScript BossScript;
+    
+    private GameManager gameManager;
     [SerializeField]
-    GameManager gameManager;
-
+    private GameObject PowerUp;
     
     
     // Use this for initialization
@@ -58,6 +60,7 @@ public class PlayerControler : MonoBehaviour
         spawnTranform = GameObject.Find("Spawn").transform;
         
         BossScript = FindObjectOfType<BossScript>();
+        gameManager = FindObjectOfType<GameManager>();
 
         playerAnimationControle = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
@@ -67,14 +70,12 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         horizontalInput = Input.GetAxis("Horizontal");
         render.flipX = horizontalInput < 0;
         playerAnimationControle.SetFloat("SpeedX", Mathf.Abs(horizontalInput));
-        Vector2 forceDirection = new Vector2(horizontalInput, 0);
         horizontalInput *= Force;
         rigid.velocity = new Vector2(horizontalInput, rigid.velocity.y);
-        
-
 
         FlipWeapon = GameObject.Find("FlipWeapon").transform;
 
@@ -97,10 +98,12 @@ public class PlayerControler : MonoBehaviour
             rigid.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
         }
 
-        if (Input.GetAxis("Fire2") > 0)
+        if (Input.GetAxis("Fire2") > 0 )
         {
             playerAnimationControle.SetBool("Throw",true);
+            
         }
+        
     }
 
     private void StopThrow()
@@ -112,11 +115,13 @@ public class PlayerControler : MonoBehaviour
     {
         if (collision.tag == "Lava")
         {
+            GameManager.PlayerPV--;
             transform.position = spawnTranform.position;
         }
 
         if (collision.tag == "Limit")
         {
+            GameManager.PlayerPV--;
             transform.position = spawnTranform.position;
         }
         if (collision.tag == "BeginTheRealGame")
@@ -134,10 +139,17 @@ public class PlayerControler : MonoBehaviour
         if (collision.tag == "ToTheBoss")
         {
             gameManager.BossLevel();
-            
         }
-        
-        
+
+        if (collision.tag == "EnemiBullet")
+        {
+            gameManager.TakeDamage();
+        }
+        if (collision.tag == "PowerUp")
+        {
+            gameManager.TakePowerUp();
+            Destroy(PowerUp);
+        }
     }
 
    
@@ -145,7 +157,7 @@ public class PlayerControler : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.realtimeSinceStartup - lastTimeFire > timeToFire)
+        if (Time.realtimeSinceStartup - lastTimeFire > timeToFire && GameManager.Mun > 0)
         {
             Vector3 positionDebugEnd = gunTransform.position + gunTransform.right;
             Debug.DrawLine(gunTransform.position, positionDebugEnd, Color.red, 5);
@@ -153,6 +165,7 @@ public class PlayerControler : MonoBehaviour
             Bullet.GetComponent<Rigidbody2D>().velocity = gunTransform.right * bulletVelocity;
             Destroy(Bullet, 5);
             lastTimeFire = Time.realtimeSinceStartup;
+            GameManager.Mun--;
         }
     }
 }

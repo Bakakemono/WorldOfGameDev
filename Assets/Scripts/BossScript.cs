@@ -28,7 +28,10 @@ public class BossScript : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (player != null)
+        {
             gunTransform.LookAt(player.transform);
+        }
+
     }
 
     public void ShootTheDev()
