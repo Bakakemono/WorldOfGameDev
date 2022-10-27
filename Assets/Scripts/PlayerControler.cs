@@ -160,8 +160,6 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
-   
-
 
     private void Fire()
     {

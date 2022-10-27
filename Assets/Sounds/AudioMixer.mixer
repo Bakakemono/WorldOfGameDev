@@ -5,7 +5,7 @@ AudioMixerController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NewAudioMixer
+  m_Name: AudioMixer
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -76,6 +76,7 @@ AudioMixerSnapshotController:
     3776ae72724472b4e9a5d87dd9cd10b1: -2.5738313
     6061ba33821efaa48b808c458cee80fa: -2.8722944
     0d5cfec3c7c700a45af8413ab33da394: -4.1973577
+    9dfad749e07e7af4ea2539f97823a714: 20
     2f15e51c7d427cc4d8bc895015cd56fa: -2.018035
     748c56be146138248aa62df859bfdece: -40.607674
   m_TransitionOverrides: {}
